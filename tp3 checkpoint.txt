@@ -1,0 +1,43 @@
+tasks={}
+task_counter=0
+print("options menu: ")
+print("1-add task")
+print("2-view task")
+print("3-mark as completed")
+print("4-delet a task")
+print("5-exit")
+def add_task(tasks,task_counter):
+  description=input("enter the task description: ")
+  priority=input("enter the task priority level: ")
+  task_id = task_counter + 1
+  tasks[task_id]=[description,priority]
+  return tasks, task_id
+def view_task(tasks):
+  print(tasks.items())
+  for key, value in tasks.items():
+    print(key,";",value)
+  return tasks.items()
+def completed(tasks):
+   cmp=int(input("provide the task id: "))
+   if cmp in tasks:
+    print("completed")
+   else:
+    print("task not found")
+   return tasks
+def delete_task(tasks):
+  D=int(input("enter the task id to delete: "))
+  del tasks[D]
+  return tasks
+x=0
+while x==0:
+  option=int(input("enter your option: "))
+  if option==1:
+    tasks, task_counter = add_task(tasks, task_counter)
+  elif option==2:
+    view_task(tasks)
+  elif option==3:
+    completed(tasks)
+  elif option==4:
+    delete_task(tasks)
+  elif option==5:
+    x=1
